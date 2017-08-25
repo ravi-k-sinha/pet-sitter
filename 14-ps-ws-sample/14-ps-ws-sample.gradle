@@ -1,0 +1,32 @@
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+buildscript {
+    dependencies {
+        classpath boot.springBootPlugin
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://repo.spring.io/snapshot/" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+}
+
+dependencies {
+    compile boot.starterWeb, boot.starterWs, boot.devtools, misc.wsdl4j, misc.jaxb
+    testCompile boot.starterTest
+}
+
+bootRun {
+    addResources = true
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src/main/java'
+            srcDirs 'src/main/jaxb'
+        }
+    }
+}

@@ -1,0 +1,19 @@
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+buildscript {
+    dependencies {
+        classpath boot.springBootPlugin
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://repo.spring.io/snapshot/" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+
+}
+
+dependencies {
+    compile boot.mq, misc.mqBroker, misc.jacksonDatabind
+}
