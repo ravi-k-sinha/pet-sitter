@@ -95,7 +95,7 @@ public class Response extends AbstractEntity {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return String.format("Request[id='%,.2f', user='%s', request='%s', responseStatus='%s']",
+        return String.format("Response[id='%d', user='%s', request='%s', responseStatus='%s']",
                 id, user == null ? "" : user.getId(), request == null ? "" : request.getId(), responseStatus);
     }
 }

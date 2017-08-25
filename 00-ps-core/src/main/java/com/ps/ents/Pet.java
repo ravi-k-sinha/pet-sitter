@@ -130,7 +130,7 @@ public class Pet extends AbstractEntity {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return String.format("Pet[id='%,.2f', owner='%s', pet type='%s', pet name='%s', age='%,.2f']", id, owner == null ? ""
-                : owner.getId(), petType.toString(), name, age);
+        return String.format("Pet[id='%d', owner='%s', pet type='%s', pet name='%s', age='%d']", id, owner == null ? ""
+                : owner.getId(), petType == null ? "" : petType.toString(), name, age);
     }
 }

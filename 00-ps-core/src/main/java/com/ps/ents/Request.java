@@ -159,7 +159,8 @@ public class Request extends AbstractEntity {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return String.format("Request[id='%,.2f', user='%s', startAt='%s', requestStatus='%s', requestStatus='%s']",
-                id, user == null ? "" : user.getId(), sdf.format(startAt), sdf.format(endAt), pets);
+        return String.format("Request[id='%d', user='%s', startAt='%s', endAt='%s', pets='%s']",
+                id, user == null ? "" : user.getId(), sdf.format(startAt), sdf.format(endAt),
+                pets == null ? "No Pets" : pets);
     }
 }
