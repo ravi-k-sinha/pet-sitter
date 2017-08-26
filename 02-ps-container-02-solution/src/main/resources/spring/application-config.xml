@@ -18,9 +18,10 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource">
-        <property name="URL" value="#{dbProp.url}"/>
-        <property name="user" value="#{dbProp.username}"/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="#{dbProp.driverClassName}"/>
+        <property name="url" value="#{dbProp.url}"/>
+        <property name="username" value="#{dbProp.username}"/>
         <property name="password" value="#{dbProp.password}"/>
         <property name="loginTimeout" value="300"/>
     </bean>

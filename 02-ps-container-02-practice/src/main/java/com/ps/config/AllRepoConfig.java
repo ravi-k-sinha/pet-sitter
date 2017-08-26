@@ -23,12 +23,12 @@ import org.springframework.context.annotation.Import;
 public class AllRepoConfig {
 
     @Bean
-    public ReviewRepo reviewRepo(){
+    public JdbcAbstractRepo<Review> reviewRepo(){
         return new JdbcReviewRepo();
     }
 
     @Bean
-    public ResponseRepo responseRepo(){
+    public JdbcAbstractRepo<Response> responseRepo(){
         return new JdbcResponseRepo();
     }
 

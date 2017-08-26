@@ -5,6 +5,7 @@ import com.ps.repos.impl.JdbcPetRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import javax.sql.DataSource;
 
@@ -13,6 +14,7 @@ import javax.sql.DataSource;
  * Sample class to depict how @ImportResource can be used
  */
 @Configuration
+@Import(DataSourceConfig.class)
 public class PetRepoConfig {
 
 

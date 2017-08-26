@@ -26,6 +26,7 @@ public class SimplePetService extends SimpleAbstractService<Pet> implements PetS
         pet.setName(name);
         pet.setAge(age);
         pet.setRfid(rfid);
+        pet.setPetType(petType);
         user.addPet(pet);
         repo.save(pet);
         return pet;
