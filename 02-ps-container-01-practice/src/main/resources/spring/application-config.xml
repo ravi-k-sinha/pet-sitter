@@ -2,23 +2,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!-- TODO 8. Complete the configuration with the necessary infrastructure bean-->
     <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:db/datasource.properties"/>
     </bean>-->
 
-    <context:property-placeholder location="classpath:db/datasource.properties"/>
+    <!--<context:property-placeholder location="classpath:db/datasource.properties"/>-->
+
+    <util:properties id="dbProp" location="classpath:db/datasource.properties"/>
 
     <bean id="dataSource1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${driverClassName}"/>
+        <!--<property name="driverClassName" value="${driverClassName}"/>
         <property name="url" value="${url}"/>
         <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
+        <property name="password" value="${password}"/>-->
+        <property name="driverClassName" value="#{dbProp.driverClassName}"/>
+        <property name="url" value="#{dbProp.url}"/>
+        <property name="username" value="#{dbProp.username}"/>
+        <property name="password" value="#{dbProp.password}"/>
     </bean>
 
 </beans>
