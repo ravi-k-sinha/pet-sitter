@@ -1,11 +1,15 @@
 package com.ps;
 
+import com.ps.another.quiz.AnotherQuizBean;
+import com.ps.cfg.AppConfig;
+import com.ps.quiz.QuizBean;
 import com.ps.sample.ComplexBean;
 import com.ps.sample.SimpleBean;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.sql.DataSource;
@@ -51,6 +55,19 @@ public class ApplicationContextTest {
         SimpleBean sb01 = ctx.getBean("simpleBean3", SimpleBean.class);
         SimpleBean sb02 = ctx.getBean("simpleBean3", SimpleBean.class);
         assertNotEquals(sb01, sb02);
+        ctx.close();
+    }
+
+    @Test
+    public void testQuiz() {
+        ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        QuizBean quizBean = ctx.getBean(QuizBean.class);
+        AnotherQuizBean anotherQuizBean = ctx.getBean(AnotherQuizBean.class);
+        assertNotNull(quizBean);
+        assertNotNull(anotherQuizBean);
+        assertNotNull(anotherQuizBean.getQuizBean());
+        assertEquals(anotherQuizBean.getQuizBean(), quizBean);
         ctx.close();
     }
 
