@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class CollectionBeansTest {
 
-    private Logger logger = LoggerFactory.getLogger(MtBeanTest.class);
+    private Logger logger = LoggerFactory.getLogger(CollectionBeansTest.class);
 
     @Test
     public void testConfig() {

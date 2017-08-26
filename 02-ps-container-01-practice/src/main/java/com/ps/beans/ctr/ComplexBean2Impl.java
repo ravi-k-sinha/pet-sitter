@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  * Created by iuliana.cosmina on 3/26/16.
  */
 public class ComplexBean2Impl implements ComplexBean {
-    private Logger logger = LoggerFactory.getLogger(ComplexBeanImpl.class);
+    private Logger logger = LoggerFactory.getLogger(ComplexBean2Impl.class);
 
     private SimpleBean simpleBean1;
     private SimpleBean simpleBean2;
