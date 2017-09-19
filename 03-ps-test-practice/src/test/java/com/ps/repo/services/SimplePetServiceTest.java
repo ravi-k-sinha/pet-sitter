@@ -56,7 +56,7 @@ public class SimplePetServiceTest {
         Pet pet = simplePetService.findById(PET_ID);
         assertNull(pet);
     }
-    @Test
+    @Test(expected = NotFoundException.class)
     public void deleteByIdNegative() {
         //TODO 14. Analyse the stub implementation and add a test for  simplePetService.deleteById(99L)
         simplePetService.deleteById(99L);
