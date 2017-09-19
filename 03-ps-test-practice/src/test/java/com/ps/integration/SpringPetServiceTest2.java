@@ -1,8 +1,10 @@
 package com.ps.integration;
 
 import com.ps.PetConfigClass;
+import com.ps.PetConfigClass2;
 import com.ps.base.UserType;
 import com.ps.config.TestAppConfig;
+import com.ps.config.TestAppConfig2;
 import com.ps.ents.Pet;
 import com.ps.ents.User;
 import com.ps.services.PetService;
@@ -22,6 +24,8 @@ import static org.junit.Assert.assertNotNull;
  * Created by iuliana.cosmina on 4/17/16.
  */
 //TODO 19. Complete the test class definition in order for all the test to pass.
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {TestAppConfig2.class, PetConfigClass2.class})
 public class SpringPetServiceTest2 {
 
     public static final Long PET_ID = 1L;
