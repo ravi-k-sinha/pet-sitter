@@ -1,6 +1,7 @@
 package com.ps.test;
 
 import com.ps.config.PetConfigClass;
+import com.ps.config.TestDataConfig;
 import com.ps.ents.Pet;
 import com.ps.services.PetService;
 import org.junit.Test;
@@ -19,7 +20,7 @@ import static org.junit.Assert.assertNull;
  */
 //complete this implementation at some point
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {PetConfigClass.class})
+@ContextConfiguration(classes = {PetConfigClass.class, TestDataConfig.class})
 @ActiveProfiles("dev")
 public class PetServiceTest {
 

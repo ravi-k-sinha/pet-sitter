@@ -4,6 +4,7 @@ import com.ps.base.PetType;
 import com.ps.ents.Pet;
 import com.ps.ents.User;
 import com.ps.repos.PetRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -18,8 +19,10 @@ public class JdbcPetRepo  extends  JdbcAbstractRepo<Pet> implements PetRepo {
     public JdbcPetRepo(){
     }
 
+    @Autowired
     public JdbcPetRepo(DataSource dataSource) {
         super(dataSource);
+        //System.out.println(dataSource);
     }
 
     @Override
