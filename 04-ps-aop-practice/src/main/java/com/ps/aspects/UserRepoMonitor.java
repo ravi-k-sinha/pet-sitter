@@ -48,6 +48,7 @@ public class UserRepoMonitor {
 
     /*TODO 23. Declare this method as a AfterThrowing advice and create a pointcut expression that matches any method
      named updateUsername that is defined in a class with the name containing "Service" */
+    @AfterThrowing(value = "execution (* com.ps.services.*Service+.updateUsername(..))", throwing = "e")
     public void afterBadUpdate(JoinPoint joinPoint, Exception e) throws Throwable {
         String className = joinPoint.getSignature().getDeclaringTypeName();
         String methodName = joinPoint.getSignature().getName();
