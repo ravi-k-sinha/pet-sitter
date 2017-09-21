@@ -2,6 +2,7 @@ package com.ps.config;
 
 import com.ps.ents.User;
 import com.ps.repos.UserRepo;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,8 @@ import static org.junit.Assert.assertNotNull;
 @ActiveProfiles("dev")
 public class TestJdbcTemplateUserRepo {
 
+    Logger logger = Logger.getLogger(TestJdbcTemplateUserRepo.class);
+
     @Autowired
     @Qualifier("userTemplateRepo")
     UserRepo userRepo;
@@ -36,6 +39,7 @@ public class TestJdbcTemplateUserRepo {
     @Test
     public void testOne() {
         Set<User> result = userRepo.findAllByUserName("John", true);
+        logger.debug("testOne(); The user found is " + result.iterator().next());
         assertEquals(1, result.size());
     }
 
