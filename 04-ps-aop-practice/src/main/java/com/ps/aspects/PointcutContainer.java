@@ -12,7 +12,7 @@ public class PointcutContainer {
     public void repoUpdate() {
     }
 
-    @Pointcut("execution (* com.ps.services.*Service+.update*(..)) && args(id,pass) && target (service)")
+    @Pointcut(value = "execution (* com.ps.services.*Service+.update*(..)) && args(id,pass) && target (service)", argNames = "service,id,pass")
     public void serviceUpdate(UserService service, Long id, String pass) {
     }
 }
