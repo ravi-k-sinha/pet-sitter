@@ -68,12 +68,15 @@ public class UserRepoMonitor {
 
     /*TODO 24. Declare this method as an Around advice and create a pointcut expression that matches any method
      with the name starting with "find" that is defined in a class with the name containing "Repo" */
+    @Around("execution(* com.ps.repos.*.*Repo+.find*(..))")
     public Object monitorFind(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = joinPoint.getSignature().getName();
         logger.info(" ---> Intercepting call of: " + methodName);
         long t1 = System.currentTimeMillis();
         try {
-            return null; //TODO 25. Call the target method
+            //return null; //TODO 25. Call the target method
+            Thread.sleep(1000L); // Sleep so that there is some execution time
+            return joinPoint.proceed();
         } finally {
             long t2 = System.currentTimeMillis();
             logger.info(" ---> Execution of " + methodName + " took: " + (t2 - t1) / 1000 + " ms.");
