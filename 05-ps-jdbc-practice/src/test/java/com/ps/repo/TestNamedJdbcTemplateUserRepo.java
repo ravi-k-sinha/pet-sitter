@@ -17,8 +17,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Set;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by iuliana.cosmina on 6/4/16.
@@ -75,5 +78,17 @@ public class TestNamedJdbcTemplateUserRepo {
         int count = userRepo.countUsers();
 
         assertEquals(4, count);
+    }
+
+    @Test
+    public void findAllByUserNameExactMatch() {
+        Set<User> userSet = userRepo.findAllByUserName("John", true);
+        assertTrue(userSet.size() == 1);
+    }
+
+    @Test
+    public void findAllByUserNamePartialMatch() {
+        Set<User> userSet = userRepo.findAllByUserName("John", false);
+        assertEquals(2, userSet.size());
     }
 }
