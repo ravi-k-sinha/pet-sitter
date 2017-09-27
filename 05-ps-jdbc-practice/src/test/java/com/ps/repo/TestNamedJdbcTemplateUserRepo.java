@@ -55,4 +55,18 @@ public class TestNamedJdbcTemplateUserRepo {
         int result = userRepo.createUser(11L, "NewUser", "NewPassword", "newemail@old.com");
         assertEquals(1, result);
     }
+
+    @Test
+    public void testDeleteById() {
+        // TODO 30:2
+
+        int existing = userRepo.findAll().size();
+        assertEquals(4, existing);
+
+        int result = userRepo.deleteById(1L);
+        assertEquals(1, result);
+
+        int remaining = userRepo.findAll().size();
+        assertEquals(3, remaining);
+    }
 }

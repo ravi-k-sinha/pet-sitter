@@ -66,8 +66,13 @@ public class JdbcNamedTemplateUserRepo implements UserRepo {
 
     @Override
     public int deleteById(Long userId) {
-        // add NamedParameterJdbcTemplate instance call to delete an user
-        return 0;
+        // TODO 29:2 add NamedParameterJdbcTemplate instance call to delete an user
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", userId);
+        String query = "delete from p_user where id = :id";
+        int rows = jdbcNamedTemplate.update(query, params);
+
+        return rows;
     }
 
     @Override
