@@ -69,4 +69,11 @@ public class TestNamedJdbcTemplateUserRepo {
         int remaining = userRepo.findAll().size();
         assertEquals(3, remaining);
     }
+
+    @Test
+    public void testCountUsers() {
+        int count = userRepo.countUsers();
+
+        assertEquals(4, count);
+    }
 }
