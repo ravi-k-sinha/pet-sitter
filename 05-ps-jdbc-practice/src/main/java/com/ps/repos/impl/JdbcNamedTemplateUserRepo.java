@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -85,8 +87,17 @@ public class JdbcNamedTemplateUserRepo implements UserRepo {
         String sql = "select id, email, username,password from p_user where id= :id";
         Map<String, Object> params = new HashMap<>();
         params.put("id", id);
-        // add NamedParameterJdbcTemplate instance call to find an user
-        return null;
+        // TODO 29:3 add NamedParameterJdbcTemplate instance call to find an user
+        return jdbcNamedTemplate.queryForObject(sql, params, (rs, rowNum) -> {
+            User user = new User();
+
+            user.setId(rs.getLong("id"));
+            user.setEmail(rs.getString("email"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+
+            return user;
+        });
     }
 
     @Override

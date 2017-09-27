@@ -218,7 +218,7 @@ public class User extends AbstractEntity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return super.toString() + ";" + String.format("User[username='%s', firstName='%s', lastName='%s', email='%s'" +
                         " userType='%s', activeSince='%s', rating=id='%f%n']", getUsername(),
-                getFirstName(), getLastName(), getEmail(), getUserType().toString(),sdf.format(createdAt), rating);
+                getFirstName(), getLastName(), getEmail(), getUserType() != null ? getUserType().toString() : "NULL",sdf.format(createdAt), rating);
 
     }
 }
