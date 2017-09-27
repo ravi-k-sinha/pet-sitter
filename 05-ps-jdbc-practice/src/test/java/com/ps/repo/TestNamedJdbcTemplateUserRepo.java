@@ -49,5 +49,10 @@ public class TestNamedJdbcTemplateUserRepo {
         User user = userRepo.findById(99L);
         assertEquals("John", user.getUsername());
     }
-    
+
+    @Test
+    public void testCreateUser() {
+        int result = userRepo.createUser(11L, "NewUser", "NewPassword", "newemail@old.com");
+        assertEquals(1, result);
+    }
 }

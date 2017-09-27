@@ -57,9 +57,11 @@ public class JdbcNamedTemplateUserRepo implements UserRepo {
         params.put("un", username);
         params.put("pass", password);
         params.put("email", email);
-        String query = "insert into p_user(ID, USERNAME, PASSWORD, EMAIL) values(:id,:un,:pass, :email)";
-        // add NamedParameterJdbcTemplate instance call to create an user
-        return 0;
+        String query = "insert into p_user(ID, USERNAME, PASSWORD, EMAIL) values(:id, :un, :pass, :email)";
+        // TODO 29:1 add NamedParameterJdbcTemplate instance call to create an user
+        int rows = jdbcNamedTemplate.update(query, params);
+
+        return rows;
     }
 
     @Override
